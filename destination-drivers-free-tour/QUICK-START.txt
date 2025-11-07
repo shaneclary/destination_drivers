@@ -1,0 +1,151 @@
+═══════════════════════════════════════════════════════════════
+DESTINATION DRIVERS - FREE WINE TOUR GIVEAWAY
+═══════════════════════════════════════════════════════════════
+
+🎯 WHAT THIS IS:
+   Vote & Win page that collects emails, tracks daily votes,
+   offers newsletter bonus entries, and auto-votes for DD
+
+📦 WHAT'S INCLUDED:
+   ✓ Main giveaway page (index.html)
+   ✓ Official Terms & Conditions (terms.html)
+   ✓ Privacy Policy (privacy.html)
+   ✓ Winner Selection Guide
+   ✓ Backend Setup Instructions
+   ✓ Complete documentation
+
+🚀 QUICK DEPLOY:
+
+   1. Upload these files to your website:
+      • index.html → giveaway/index.html
+      • terms.html → giveaway/terms.html
+      • privacy.html → giveaway/privacy.html
+
+   2. Set up email collection backend:
+      • See BACKEND-SETUP.md for options
+      • Recommended: Airtable (easiest) or Mailchimp (best for newsletter)
+
+   3. Update contact info in terms.html and privacy.html
+
+   4. Share: destinationdrivers.com/giveaway
+
+⚙️ HOW IT WORKS:
+
+   USER EXPERIENCE:
+   1. User visits page → Sees countdown timer
+   2. User enters email + chooses newsletter preference
+   3. User clicks "Vote Now & Enter to Win"
+   4. Vote auto-submitted for Destination Drivers
+   5. Thank you screen shows entries earned
+
+   ENTRY SYSTEM:
+   • Newsletter subscribers: 3 entries per vote
+   • Non-subscribers: 1 entry per vote
+   • One vote per email per day
+   • Users can return daily for more entries
+
+   VOTING PERIOD:
+   • Starts: October 10, 2025
+   • Ends: November 14, 2025 @ 5:00 PM PST
+   • Countdown timer shows time remaining
+
+📊 BACKEND REQUIRED:
+
+   You MUST set up a backend to collect emails!
+
+   OPTIONS (easiest to hardest):
+   1. Google Forms (free, no coding) ⭐ EASIEST
+   2. Mailchimp (free, newsletter built-in) ⭐ BEST FOR NEWSLETTERS
+   3. Airtable (free, easy tracking) ⭐ BEST BALANCE
+   4. Firebase (free, developer-friendly)
+   5. Custom backend (full control)
+
+   See BACKEND-SETUP.md for complete instructions
+
+🎲 WINNER SELECTION:
+
+   After voting ends (11/14/2025):
+   1. Export all entries from your backend
+   2. Calculate total entries per person
+   3. Use Random.org to pick winner
+   4. Notify winner by email (72-hour response time)
+
+   See WINNER-SELECTION-GUIDE.md for step-by-step
+
+⚖️ LEGAL COMPLIANCE:
+
+   ✓ NO PURCHASE NECESSARY disclosure
+   ✓ Official Rules (terms.html)
+   ✓ Privacy Policy (privacy.html)
+   ✓ Newsletter completely optional
+   ✓ GDPR/CCPA compliant
+   ✓ Age requirement: 21+
+   ✓ Geographic: California residents only
+
+   UPDATE REQUIRED:
+   Add your business contact info to:
+   • terms.html (sponsor section)
+   • privacy.html (contact section)
+
+📧 NEWSLETTER INCENTIVE:
+
+   Newsletter = 3 entries per vote
+   No newsletter = 1 entry per vote
+
+   Users can unsubscribe anytime without losing entries
+
+🔒 PRIVACY FEATURES:
+
+   • Email collection disclosed upfront
+   • Clear opt-in/opt-out for newsletter
+   • Data retention: 1 year after giveaway
+   • Users can request data deletion
+   • No selling of email addresses
+
+📱 SHARE WITH CUSTOMERS:
+
+   "🍷 Enter to Win a Free Wine Tour!
+
+   • Vote daily for more chances
+   • Newsletter subscribers get 3x entries
+   • Auto-votes for Destination Drivers
+
+   Enter: destinationdrivers.com/giveaway
+
+   Ends: 11/14/2025 @ 5:00 PM"
+
+✅ PRE-LAUNCH CHECKLIST:
+
+   [ ] Upload HTML files to website
+   [ ] Set up backend email collection
+   [ ] Update contact info in terms.html
+   [ ] Update contact info in privacy.html
+   [ ] Test form submission
+   [ ] Test auto-voting feature
+   [ ] Test countdown timer
+   [ ] Test on mobile device
+   [ ] Test daily limit
+   [ ] Review with attorney (recommended)
+   [ ] Prepare for winner selection
+   [ ] Test newsletter opt-in/opt-out
+
+📞 NEED HELP?
+
+   • Backend Setup → BACKEND-SETUP.md
+   • Winner Selection → WINNER-SELECTION-GUIDE.md
+   • Full Documentation → README.md
+   • Legal Questions → Consult attorney
+
+═══════════════════════════════════════════════════════════════
+
+⚠️ IMPORTANT: This is a SEPARATE giveaway from the simple
+   voting page. This version collects emails and requires
+   backend infrastructure to store entries.
+
+   If you just want simple auto-voting without email collection,
+   use the "destination-drivers-vote" project instead.
+
+═══════════════════════════════════════════════════════════════
+
+Made for Destination Drivers 🚗🍷
+Vote & Win • Newsletter Bonus • Daily Entries

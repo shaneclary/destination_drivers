@@ -1,0 +1,164 @@
+═══════════════════════════════════════════════════════════════════════════
+DESTINATION DRIVERS GIVEAWAY - QUICK REFERENCE CARD
+═══════════════════════════════════════════════════════════════════════════
+
+📦 WHAT YOU HAVE:
+  ✓ Airtable base for storing entries
+  ✓ Google Apps Script backend (validates daily limits)
+  ✓ Website form with auto-voting
+  ✓ Countdown timer to 11/14/2025 5:00 PM PST
+  ✓ Newsletter bonus: 3 entries vs 1 entry
+  ✓ Legal docs (terms.html, privacy.html)
+
+═══════════════════════════════════════════════════════════════════════════
+
+🔑 YOUR CREDENTIALS (Keep these safe!):
+
+  Airtable Personal Access Token: patXXXXXXXXXXXXXX
+  Airtable Base ID: appXXXXXXXXXXXXXX
+  Airtable Table ID: tblXXXXXXXXXXXXXX
+  Google Apps Script URL: https://script.google.com/macros/s/XXXXX/exec
+
+═══════════════════════════════════════════════════════════════════════════
+
+🚀 QUICK SETUP (25 minutes total):
+
+  1. Get Airtable credentials (5 min)
+     → https://airtable.com/create/tokens
+     → Get token, base ID, table ID
+
+  2. Set up Google Apps Script (10 min)
+     → https://script.google.com
+     → Copy code from google-apps-script-backend.js
+     → Add credentials to Script Properties
+     → Deploy as Web App
+
+  3. Update website (2 min)
+     → Edit index.html line 466
+     → Add your Google Apps Script URL
+
+  4. Upload to website (5 min)
+     → Upload index.html, terms.html, privacy.html
+     → To: destinationdrivers.com/giveaway/
+
+  5. Test (3 min)
+     → Submit test entries
+     → Verify 3 rows for newsletter, 1 for no newsletter
+     → Delete test entries
+
+═══════════════════════════════════════════════════════════════════════════
+
+📊 HOW ENTRIES WORK:
+
+  Newsletter Checked:   3 entries (1 Original + 2 Bonus)
+  Newsletter Unchecked: 1 entry  (1 Original only)
+  Daily Limit:          1 vote per email per day
+  Vote Again:           Next day (PST timezone)
+
+═══════════════════════════════════════════════════════════════════════════
+
+🎯 WINNER SELECTION (After 11/14/2025):
+
+  1. Airtable → "Valid Entries Only" view
+  2. Count total entries
+  3. Random.org → Pick number 1 to [total]
+  4. Match Entry Number to winner
+  5. Email winner (72-hour response time)
+
+═══════════════════════════════════════════════════════════════════════════
+
+📁 FILES TO UPLOAD TO WEBSITE:
+
+  ✓ index.html         → Main giveaway page
+  ✓ terms.html         → Official rules & terms
+  ✓ privacy.html       → Privacy policy
+
+  Location: destinationdrivers.com/giveaway/
+
+═══════════════════════════════════════════════════════════════════════════
+
+🔧 FILES FOR SETUP (Don't upload these):
+
+  • google-apps-script-backend.js  → Copy to script.google.com
+  • COMPLETE-SETUP-GUIDE.md        → Full instructions
+  • airtable-automation-script.js  → Not needed (paid feature)
+  • giveaway-entries-template.csv  → Optional backup
+
+═══════════════════════════════════════════════════════════════════════════
+
+📱 SHARE WITH CUSTOMERS:
+
+  🍷 WIN A FREE WINE TOUR FOR 2!
+
+  Enter daily for more chances:
+  destinationdrivers.com/giveaway
+
+  • Auto-votes for Destination Drivers
+  • Newsletter subscribers get 3x entries
+  • Drawing: 11/14/2025 @ 5:00 PM PST
+
+═══════════════════════════════════════════════════════════════════════════
+
+🆘 TROUBLESHOOTING:
+
+  Problem: Bonus entries not created
+  Fix: Check Airtable automation is ON
+       Check conditions: Newsletter = checked, Entry Type = "Original"
+
+  Problem: Daily limit not working
+  Fix: Check Google Apps Script script properties
+       Check token has correct permissions
+
+  Problem: Website not submitting
+  Fix: Check BACKEND_URL in index.html (line 466)
+       Check Google Apps Script deployed with "Anyone" access
+
+  Problem: Auto-voting not working
+  Fix: Check browser allows popups
+       May need to manually vote if site changed
+
+═══════════════════════════════════════════════════════════════════════════
+
+💰 COST: $0/month (100% FREE!)
+
+  Airtable Free:        ✓ Up to 1,000 records
+  Google Apps Script:   ✓ Unlimited (free tier)
+  Website Hosting:      (Your existing hosting)
+
+═══════════════════════════════════════════════════════════════════════════
+
+📞 SUPPORT LINKS:
+
+  Full Setup Guide:  COMPLETE-SETUP-GUIDE.md
+  Airtable Help:     https://support.airtable.com
+  Apps Script Help:  https://developers.google.com/apps-script
+  Random.org:        https://www.random.org/integers/
+
+═══════════════════════════════════════════════════════════════════════════
+
+✅ PRE-LAUNCH CHECKLIST:
+
+  [ ] Airtable base created with Entries table
+  [ ] Airtable automation turned ON
+  [ ] Google Apps Script deployed as Web App
+  [ ] Script properties added (token, base ID, table ID)
+  [ ] index.html updated with BACKEND_URL
+  [ ] All 3 files uploaded to website
+  [ ] Test submission (no newsletter) = 1 entry
+  [ ] Test submission (newsletter) = 3 entries
+  [ ] Test daily limit (same email) = error message
+  [ ] Auto-voting popup works
+  [ ] Countdown timer shows correct date
+  [ ] Terms & Privacy links work
+  [ ] Delete all test entries from Airtable
+  [ ] Ready to share link!
+
+═══════════════════════════════════════════════════════════════════════════
+
+🚗🍷 READY TO LAUNCH!
+
+Share: destinationdrivers.com/giveaway
+
+Good luck winning "Best Wine Tour"!
+
+═══════════════════════════════════════════════════════════════════════════

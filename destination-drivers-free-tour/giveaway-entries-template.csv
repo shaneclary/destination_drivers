@@ -1,0 +1,5 @@
+Entry Number,Email,Vote Date,Vote Time,Newsletter Opt-In,Entry Type,IP Address,Status,Notes
+1,example@email.com,10/15/2025,2:30 PM,TRUE,Original,192.168.1.1,Valid,Sample entry with newsletter
+2,example@email.com,10/15/2025,2:30 PM,TRUE,Bonus 1,192.168.1.1,Valid,Auto-generated bonus entry
+3,example@email.com,10/15/2025,2:30 PM,TRUE,Bonus 2,192.168.1.1,Valid,Auto-generated bonus entry
+4,test@email.com,10/15/2025,3:45 PM,FALSE,Original,192.168.1.2,Valid,Sample entry without newsletter

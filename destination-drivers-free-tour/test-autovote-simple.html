@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🧪 Simple Auto-Vote Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .container {
+            background: white;
+            color: #333;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        .warning {
+            background: #ffa500;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 20px 40px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            width: 100%;
+            margin: 10px 0;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+        .info {
+            background: #e8f4f8;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        code {
+            background: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="warning">
+            🧪 TEST MODE - This will vote for Halfway Station (Best Burger)
+        </div>
+
+        <h1>🍔 Simple Auto-Vote Test</h1>
+
+        <p>This test will navigate to votecentralcoast.com in THIS window (no popup) and automatically click through to vote for Halfway Station.</p>
+
+        <div class="info">
+            <strong>📋 What will happen:</strong><br>
+            1. This page will redirect to votecentralcoast.com<br>
+            2. After 3 seconds, it will auto-click: <code>Eat & Drink</code><br>
+            3. After 2 more seconds: <code>Burger</code><br>
+            4. After 2 more seconds: <code>Halfway Station</code><br>
+            5. You'll see the vote get selected!
+        </div>
+
+        <button onclick="startAutoVote()">🍔 START AUTO-VOTE TEST</button>
+
+        <div class="info" style="margin-top: 20px;">
+            <strong>💡 TIP:</strong> Press F12 and go to the Console tab BEFORE clicking the button to see debug messages.
+        </div>
+    </div>
+
+    <script>
+        function startAutoVote() {
+            console.log('🧪 TEST: Starting auto-vote in 2 seconds...');
+
+            setTimeout(() => {
+                console.log('🧪 TEST: Redirecting to votecentralcoast.com...');
+                window.location.href = 'https://www.votecentralcoast.com';
+
+                window.addEventListener('load', function() {
+                    console.log('🧪 TEST: Page loaded, waiting 3 seconds...');
+
+                    setTimeout(() => {
+                        console.log('🧪 TEST: Looking for "Eat & Drink"...');
+
+                        // Step 1: Click "Eat & Drink"
+                        const eatAndDrink = Array.from(document.querySelectorAll('*'))
+                            .find(el => el.textContent.trim() === 'Eat & Drink');
+
+                        if (eatAndDrink) {
+                            console.log('✅ TEST: Found "Eat & Drink", clicking...');
+                            eatAndDrink.click();
+
+                            setTimeout(() => {
+                                console.log('🧪 TEST: Looking for "Burger"...');
+
+                                // Step 2: Click "Burger"
+                                const burger = Array.from(document.querySelectorAll('*'))
+                                    .find(el => el.textContent.trim() === 'Burger');
+
+                                if (burger) {
+                                    console.log('✅ TEST: Found "Burger", clicking...');
+                                    burger.click();
+
+                                    setTimeout(() => {
+                                        console.log('🧪 TEST: Looking for "Halfway Station"...');
+
+                                        // Step 3: Select "Halfway Station"
+                                        const halfwayStation = Array.from(document.querySelectorAll('label'))
+                                            .find(el => el.textContent.includes('Halfway Station'));
+
+                                        if (halfwayStation) {
+                                            console.log('✅ TEST: Found "Halfway Station", clicking...');
+                                            const inputId = halfwayStation.getAttribute('for');
+                                            const input = document.getElementById(inputId);
+                                            if (input) {
+                                                input.click();
+                                                console.log('🎉 TEST: SUCCESS! Vote was clicked!');
+                                                console.log('👀 You should see Halfway Station selected on the page!');
+                                            }
+                                        } else {
+                                            console.log('❌ TEST: Could not find "Halfway Station"');
+                                        }
+                                    }, 2000);
+                                } else {
+                                    console.log('❌ TEST: Could not find "Burger" category');
+                                }
+                            }, 2000);
+                        } else {
+                            console.log('❌ TEST: Could not find "Eat & Drink" category');
+                        }
+                    }, 3000);
+                });
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
