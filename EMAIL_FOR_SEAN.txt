@@ -1,0 +1,371 @@
+Subject: Destination Drivers Voting Campaigns - Super Easy Setup Guide
+
+Hi Sean,
+
+I've got your two voting campaigns all set up and ready to go live! I've made this as simple as possible - just follow these steps and you'll be up and running.
+
+===========================================
+WHAT YOU'RE GETTING
+===========================================
+
+Two voting campaigns to help win Best Wine Tour 2026:
+
+1. "Free Tour Giveaway" - Collects emails, gives away prizes
+2. "InstaVote" - Simple voting page
+
+Both work on desktop AND mobile (iPhone/Safari included!).
+
+
+===========================================
+STEP 1: DOWNLOAD THE FILES
+===========================================
+
+Go to: https://github.com/shaneclary/destination_drivers
+
+Click the GREEN "Code" button → Download ZIP
+
+Unzip the file on your computer.
+
+You'll see two folders:
+- destination-drivers-free-tour
+- destination-drivers-instavote
+
+
+===========================================
+STEP 2: LOG INTO YOUR NIXIHOST ACCOUNT
+===========================================
+
+1. Go to your NixiHost control panel (cPanel)
+2. Look for "File Manager" icon and click it
+3. You should see a folder called "public_html" - double click it
+
+
+===========================================
+STEP 3: CREATE FOLDERS FOR YOUR CAMPAIGNS
+===========================================
+
+Inside public_html:
+
+1. Click "New Folder" button (usually at the top)
+2. Type: free-tour
+3. Click "Create"
+
+4. Click "New Folder" again
+5. Type: instavote
+6. Click "Create"
+
+You should now see:
+- public_html/free-tour/
+- public_html/instavote/
+
+
+===========================================
+STEP 4: UPLOAD THE FREE TOUR CAMPAIGN
+===========================================
+
+1. In File Manager, open the "free-tour" folder you just created
+2. Click "Upload" button
+3. Click "Select File"
+4. Navigate to where you unzipped the files
+5. Go to: destination-drivers-free-tour folder
+6. Select "index.html"
+7. Click Open
+8. Wait for upload to finish (you'll see a green checkmark)
+
+DONE! Your free tour campaign is live at:
+https://yourdomain.com/free-tour/
+
+(Replace "yourdomain.com" with your actual domain)
+
+
+===========================================
+STEP 5: UPLOAD THE INSTAVOTE CAMPAIGN
+===========================================
+
+1. Click "Back" or navigate back to public_html
+2. Open the "instavote" folder
+3. Click "Upload" button
+4. Click "Select File"
+5. Navigate to: destination-drivers-instavote folder
+6. Select "index.html"
+7. Click Open
+8. Wait for upload to finish
+
+DONE! Your instavote campaign is live at:
+https://yourdomain.com/instavote/
+
+
+===========================================
+STEP 6: SET UP GIVEAWAY BACKEND (REQUIRED FOR FREE TOUR)
+===========================================
+
+The Free Tour campaign needs a backend to save email entries to Airtable.
+
+A. CREATE AIRTABLE ACCOUNT (if you don't have one)
+
+1. Go to: https://airtable.com
+2. Sign up for a free account
+3. Create a new base called "Destination Drivers Giveaway"
+4. Create a table called "Entries" with these columns:
+   - Email (Single line text)
+   - Vote Date (Date)
+   - Newsletter Opted In (Checkbox)
+   - Entry Type (Single select: Original, Bonus)
+   - Timestamp (Date with time)
+
+B. GET YOUR AIRTABLE API KEY
+
+1. Click your profile icon (top right)
+2. Go to "Account"
+3. In the left sidebar, click "API"
+4. Under "Personal Access Token", click "Create new token"
+5. Name it: "Destination Drivers"
+6. Give it these scopes:
+   - data.records:read
+   - data.records:write
+7. Select your base under "Access"
+8. Click "Create token"
+9. COPY THE TOKEN (you'll need it in a minute)
+10. Save it somewhere safe (you can't see it again!)
+
+C. GET YOUR BASE ID
+
+1. Go to: https://airtable.com/api
+2. Click on your "Destination Drivers Giveaway" base
+3. Look at the URL - it will look like:
+   https://airtable.com/appXXXXXXXXXXXXXX/api/docs
+4. Copy the part that starts with "app" (like: appAbc123Xyz456)
+   This is your BASE ID
+
+D. SET UP GOOGLE APPS SCRIPT
+
+1. Go to: https://script.google.com
+2. Click "+ New project"
+3. You'll see a code editor with "function myFunction() {}"
+4. DELETE everything in the editor
+5. Open the file: google-apps-script-backend.js
+   (It's in the destination-drivers-free-tour folder)
+6. COPY ALL the code from that file
+7. PASTE it into the Google Apps Script editor
+
+E. UPDATE THE CONFIGURATION
+
+In the Google Apps Script editor, look at the top (around lines 2-4).
+
+You'll see:
+const AIRTABLE_API_KEY = 'YOUR_API_KEY';
+const AIRTABLE_BASE_ID = 'YOUR_BASE_ID';
+const AIRTABLE_TABLE_NAME = 'YOUR_TABLE_NAME';
+
+Replace with YOUR actual values:
+const AIRTABLE_API_KEY = 'patXXXXXXXXXXXXXX';  ← Your token from step B
+const AIRTABLE_BASE_ID = 'appXXXXXXXXXXXXXX';  ← Your base ID from step C
+const AIRTABLE_TABLE_NAME = 'Entries';         ← Keep as 'Entries'
+
+F. DEPLOY THE SCRIPT
+
+1. Click the disk icon (save button) to save
+2. Name it: "Destination Drivers Backend"
+3. Click "Deploy" → "New deployment"
+4. Click the gear icon → Select "Web app"
+5. Description: "Destination Drivers Giveaway"
+6. Execute as: Me
+7. Who has access: Anyone
+8. Click "Deploy"
+9. Click "Authorize access"
+10. Choose your Google account
+11. Click "Advanced" → "Go to Destination Drivers Backend (unsafe)"
+    (It's safe - it's YOUR script!)
+12. Click "Allow"
+13. COPY THE WEB APP URL (looks like: https://script.google.com/macros/s/XXXXX/exec)
+14. Save this URL!
+
+G. UPDATE YOUR WEBSITE
+
+1. Go back to NixiHost File Manager
+2. Navigate to public_html/free-tour/
+3. Right-click on "index.html"
+4. Click "Edit"
+5. Press Ctrl+F to search
+6. Search for: BACKEND_URL
+7. You'll find this line (around line 466):
+   const BACKEND_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL';
+8. Replace 'YOUR_GOOGLE_APPS_SCRIPT_URL' with YOUR web app URL from step F13
+   Should look like:
+   const BACKEND_URL = 'https://script.google.com/macros/s/XXXXX/exec';
+9. Click "Save Changes"
+10. Close the editor
+
+
+===========================================
+STEP 7: TEST EVERYTHING
+===========================================
+
+A. TEST INSTAVOTE (Simple one first!)
+
+1. Go to: https://yourdomain.com/instavote/
+2. Click "VOTE NOW"
+3. You should see instructions OR a new voting window open
+4. If you're on desktop, a new browser might open and auto-click through
+5. If you're on mobile, you'll see a popup with instructions
+
+B. TEST FREE TOUR
+
+1. Go to: https://yourdomain.com/free-tour/
+2. Enter your email address
+3. Check the newsletter box (to test bonus entries)
+4. Click "VOTE NOW & ENTER TO WIN"
+
+Desktop behavior:
+- New browser window should open
+- It should navigate to votecentralcoast.com
+- (If you set up the Node.js server, it auto-clicks through)
+
+Mobile behavior:
+- You'll see a beautiful popup with voting instructions
+- Click "GOT IT! LET'S VOTE"
+- Voting site opens in new tab
+
+5. Check your Airtable:
+   - You should see a new entry with your email
+   - If you checked the newsletter box, you should see 3 entries total
+     (1 Original + 2 Bonus)
+
+C. TEST DAILY LIMIT
+
+Try voting again with the same email immediately.
+You should see: "You can only vote once per day"
+
+
+===========================================
+OPTIONAL: DESKTOP AUTO-VOTING (ADVANCED)
+===========================================
+
+This makes the browser automatically click through the voting categories on desktop computers. Mobile users always get instructions regardless.
+
+⚠️ SKIP THIS IF:
+- You're on shared hosting (most NixiHost plans)
+- You don't have a VPS or dedicated server
+- You're not comfortable with command line
+
+This requires:
+- A VPS or dedicated server (NOT shared hosting)
+- Node.js installed
+- SSH access
+- Technical knowledge
+
+If you want this feature, see the full guide in DEPLOYMENT.md in the GitHub repo.
+
+The campaigns work GREAT without this! Desktop users just vote manually.
+
+
+===========================================
+WHAT HAPPENS NOW
+===========================================
+
+Desktop Users:
+✅ Click "VOTE NOW"
+✅ Voting site opens
+✅ They vote (manually or auto if you set up Node.js server)
+✅ Email gets saved to Airtable
+
+Mobile Users (iPhone/Safari):
+✅ Click "VOTE NOW"
+✅ See beautiful instruction popup
+✅ Click "GOT IT!"
+✅ Voting site opens
+✅ Follow the 4 simple steps
+✅ Email gets saved to Airtable
+
+
+===========================================
+YOUR LIVE CAMPAIGN URLS
+===========================================
+
+Free Tour Giveaway:
+https://yourdomain.com/free-tour/
+
+InstaVote:
+https://yourdomain.com/instavote/
+
+(Replace "yourdomain.com" with your actual domain name)
+
+
+===========================================
+TROUBLESHOOTING
+===========================================
+
+Problem: "Could not connect to auto-vote API"
+Solution: This is normal! It means the Node.js server isn't running. Desktop users will just vote manually. Everything still works.
+
+Problem: Votes not saving to Airtable
+Solution:
+- Check that you updated the BACKEND_URL in index.html
+- Make sure your Google Apps Script is deployed as "Anyone can access"
+- Verify your Airtable API key and Base ID are correct
+
+Problem: Logo text is cut off
+Solution: This should be fixed! If you still see it, try clearing your browser cache (Ctrl+Shift+Delete)
+
+Problem: Page doesn't load
+Solution:
+- Check that index.html is in the right folder
+- Make sure the file is named exactly "index.html" (lowercase)
+- Try accessing: https://yourdomain.com/free-tour/index.html
+
+Problem: Mobile users don't see instructions
+Solution: Make sure you uploaded the latest index.html file. The mobile instructions were just added.
+
+
+===========================================
+NEED HELP?
+===========================================
+
+Full documentation is here:
+https://github.com/shaneclary/destination_drivers/blob/main/DEPLOYMENT.md
+
+You can also:
+1. Check the GitHub Issues page
+2. Review the README.md file
+3. Look at the code comments in the files
+
+
+===========================================
+SUMMARY OF FILES YOU UPLOADED
+===========================================
+
+✅ public_html/free-tour/index.html
+✅ public_html/instavote/index.html
+
+Optional (only if using Node.js):
+- api-server.js
+- package.json
+
+That's it! Everything else is handled by Google Apps Script and Airtable.
+
+
+===========================================
+FINAL CHECKLIST
+===========================================
+
+□ Files uploaded to NixiHost
+□ Free Tour accessible at: yourdomain.com/free-tour/
+□ InstaVote accessible at: yourdomain.com/instavote/
+□ Airtable account created with "Entries" table
+□ Google Apps Script deployed
+□ BACKEND_URL updated in index.html
+□ Tested voting on desktop
+□ Tested voting on mobile (iPhone if possible)
+□ Verified entries appear in Airtable
+□ Confirmed bonus entries work (3 total with newsletter)
+
+
+You're all set! The campaigns are beautifully branded with Destination Drivers colors, work on all devices, and will help you win Best Wine Tour 2026!
+
+Let me know if you have any questions!
+
+Best,
+[Your name]
+
+
+P.S. Don't forget to share these URLs on social media and with your customer email list! The more votes, the better chance of winning!
