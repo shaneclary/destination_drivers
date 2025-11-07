@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vote & Win a Free Wine Tour! - Destination Drivers</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,8 +13,8 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Lato', sans-serif;
+            background: linear-gradient(135deg, #0693E3 0%, #2537F7 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -37,14 +38,15 @@
         }
 
         h1 {
-            color: #333;
+            color: #1E293B;
             font-size: 32px;
             margin-bottom: 10px;
             line-height: 1.2;
+            font-weight: 900;
         }
 
         .subtitle {
-            color: #667eea;
+            color: #046BD2;
             font-size: 22px;
             font-weight: bold;
             margin-bottom: 20px;
@@ -119,8 +121,8 @@
 
         input[type="email"]:focus {
             outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            border-color: #046BD2;
+            box-shadow: 0 0 0 3px rgba(4, 107, 210, 0.1);
         }
 
         .checkbox-container {
@@ -164,15 +166,15 @@
         }
 
         .vote-button {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #1F875A;
             color: white;
             border: none;
             padding: 20px 50px;
             font-size: 22px;
-            font-weight: bold;
-            border-radius: 50px;
+            font-weight: 900;
+            border-radius: 40px;
             cursor: pointer;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 10px 30px rgba(31, 135, 90, 0.4);
             transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -180,8 +182,9 @@
         }
 
         .vote-button:hover:not(:disabled) {
+            background: #196E49;
             transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+            box-shadow: 0 15px 40px rgba(31, 135, 90, 0.6);
         }
 
         .vote-button:disabled {
@@ -190,18 +193,18 @@
         }
 
         .info-box {
-            background: #e8f4f8;
-            border-left: 4px solid #667eea;
+            background: #F0F5FA;
+            border-left: 4px solid #046BD2;
             padding: 15px;
             margin: 20px 0;
             border-radius: 5px;
             text-align: left;
             font-size: 14px;
-            color: #555;
+            color: #334155;
         }
 
         .terms-link {
-            color: #667eea;
+            color: #046BD2;
             text-decoration: none;
             font-weight: 600;
         }
@@ -274,7 +277,7 @@
 
         .spinner {
             border: 4px solid #f3f3f3;
-            border-top: 4px solid #667eea;
+            border-top: 4px solid #046BD2;
             border-radius: 50%;
             width: 40px;
             height: 40px;
@@ -285,6 +288,131 @@
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
+        }
+
+        /* Mobile Instructions Modal */
+        .mobile-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .mobile-modal.active {
+            display: flex;
+        }
+
+        .mobile-modal-content {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            animation: slideUp 0.4s ease-out;
+        }
+
+        @keyframes slideUp {
+            0% {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .mobile-modal h2 {
+            color: #1E293B;
+            font-size: 28px;
+            margin-bottom: 20px;
+            font-weight: 900;
+        }
+
+        .mobile-modal p {
+            color: #334155;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .instruction-steps {
+            background: #F0F5FA;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border-left: 5px solid #046BD2;
+        }
+
+        .instruction-step {
+            margin: 15px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .step-number {
+            background: linear-gradient(135deg, #0693E3 0%, #2537F7 100%);
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            flex-shrink: 0;
+            font-size: 18px;
+        }
+
+        .step-text {
+            color: #1E293B;
+            font-size: 16px;
+            line-height: 1.5;
+            padding-top: 5px;
+        }
+
+        .step-highlight {
+            background: #FEF3C7;
+            padding: 2px 8px;
+            border-radius: 5px;
+            font-weight: 700;
+            color: #92400E;
+        }
+
+        .modal-button {
+            background: #1F875A;
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            font-size: 18px;
+            font-weight: 900;
+            border-radius: 40px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .modal-button:hover {
+            background: #196E49;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(31, 135, 90, 0.4);
+        }
+
+        .mobile-emoji {
+            font-size: 50px;
+            margin-bottom: 15px;
         }
 
         @media (max-width: 600px) {
@@ -307,6 +435,18 @@
 
             .countdown-number {
                 font-size: 24px;
+            }
+
+            .mobile-modal-content {
+                padding: 30px 20px;
+            }
+
+            .mobile-modal h2 {
+                font-size: 24px;
+            }
+
+            .step-text {
+                font-size: 15px;
             }
         }
     </style>
@@ -399,6 +539,49 @@
                     Winner will be announced after 11/14/2025.
                 </p>
             </div>
+        </div>
+    </div>
+
+    <!-- Mobile Instructions Modal -->
+    <div class="mobile-modal" id="mobileModal">
+        <div class="mobile-modal-content">
+            <div class="mobile-emoji">📱</div>
+            <h2>Quick Voting Instructions</h2>
+            <p>The voting site will open in a new tab. Follow these simple steps:</p>
+
+            <div class="instruction-steps">
+                <div class="instruction-step">
+                    <div class="step-number">1</div>
+                    <div class="step-text">
+                        Tap <span class="step-highlight">Wineries</span>
+                    </div>
+                </div>
+
+                <div class="instruction-step">
+                    <div class="step-number">2</div>
+                    <div class="step-text">
+                        Tap <span class="step-highlight">Wine Tour</span>
+                    </div>
+                </div>
+
+                <div class="instruction-step">
+                    <div class="step-number">3</div>
+                    <div class="step-text">
+                        Select <span class="step-highlight">Destination Drivers</span>
+                    </div>
+                </div>
+
+                <div class="instruction-step">
+                    <div class="step-number">4</div>
+                    <div class="step-text">
+                        Scroll down and tap <span class="step-highlight">Submit</span>
+                    </div>
+                </div>
+            </div>
+
+            <button class="modal-button" onclick="closeMobileModal()">
+                GOT IT! LET'S VOTE
+            </button>
         </div>
     </div>
 
@@ -563,11 +746,36 @@
             }
         }
 
-        // Auto-vote function - Opens voting site + triggers API automation
+        // Mobile detection
+        function isMobileDevice() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+                || (window.innerWidth <= 768);
+        }
+
+        // Show mobile instructions modal
+        function showMobileModal() {
+            document.getElementById('mobileModal').classList.add('active');
+        }
+
+        // Close mobile instructions modal
+        function closeMobileModal() {
+            document.getElementById('mobileModal').classList.remove('active');
+            // Open voting site after they close the modal
+            window.open('https://www.votecentralcoast.com', '_blank');
+        }
+
+        // Auto-vote function - Opens voting site + triggers API automation (desktop) or shows instructions (mobile)
         async function performAutoVote() {
             const email = document.getElementById('email').value.trim();
 
-            // Try to trigger API automation in background
+            // Check if mobile device
+            if (isMobileDevice()) {
+                console.log('📱 Mobile device detected - showing voting instructions');
+                showMobileModal();
+                return true;
+            }
+
+            // Desktop: Try to trigger API automation in background
             try {
                 console.log('🚗 Triggering auto-vote via API...');
 
@@ -590,7 +798,7 @@
                 console.error('⚠️ API trigger error:', error);
             }
 
-            // ALWAYS open voting site in new window (user can see and complete vote)
+            // Desktop: ALWAYS open voting site in new window (user can see and complete vote)
             console.log('🌐 Opening voting site...');
             window.open('https://www.votecentralcoast.com', '_blank', 'width=1200,height=900');
 

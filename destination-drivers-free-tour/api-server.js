@@ -15,7 +15,7 @@
 
 const express = require('express');
 const cors = require('cors');
-const { chromium } = require('playwright');
+const { chromium, firefox, webkit } = require('playwright');
 
 const app = express();
 const PORT = 3000;
@@ -28,20 +28,48 @@ app.use(express.json());
 const activeSessions = new Map();
 
 /**
+ * Try to launch a browser from the available options
+ * Priority: Chrome -> Edge -> Firefox -> Webkit (Safari-like) -> Chromium (bundled)
+ */
+async function launchBrowser() {
+    const browserOptions = [
+        { name: 'Chrome', type: chromium, config: { channel: 'chrome' } },
+        { name: 'Microsoft Edge', type: chromium, config: { channel: 'msedge' } },
+        { name: 'Firefox', type: firefox, config: {} },
+        { name: 'WebKit (Safari-like)', type: webkit, config: {} },
+        { name: 'Chromium (bundled)', type: chromium, config: {} }
+    ];
+
+    for (const option of browserOptions) {
+        try {
+            console.log(`🔍 Trying ${option.name}...`);
+            const browser = await option.type.launch({
+                ...option.config,
+                headless: false,
+                slowMo: 100,
+                args: [
+                    '--start-maximized',
+                    '--window-position=0,0'
+                ]
+            });
+            console.log(`✅ Successfully launched ${option.name}!`);
+            return { browser, browserName: option.name };
+        } catch (error) {
+            console.log(`⚠️  ${option.name} not available: ${error.message}`);
+        }
+    }
+
+    throw new Error('No browser available! Please install Chrome, Edge, or Firefox.');
+}
+
+/**
  * Auto-vote function using Playwright
  */
 async function performAutoVote(email) {
     console.log(`🚗 Starting auto-vote for: ${email}`);
 
-    const browser = await chromium.launch({
-        headless: false,  // Show browser so user can see and submit
-        channel: 'msedge',  // Use Microsoft Edge (pre-installed on Windows)
-        slowMo: 100,
-        args: [
-            '--start-maximized',  // Start maximized
-            '--window-position=0,0'  // Position at top-left
-        ]
-    });
+    const { browser, browserName } = await launchBrowser();
+    console.log(`🌐 Using browser: ${browserName}`);
 
     const context = await browser.newContext({
         viewport: null  // Use full window size
