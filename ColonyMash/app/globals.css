@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --accent: #7C5CFF;
+  --black: #0B0B0B;
+  --white: #FFFFFF;
+}
+
+@layer base {
+  * {
+    @apply border-black;
+  }
+
+  body {
+    @apply bg-white text-black font-body antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-bold;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-8 py-4 text-base font-medium text-white bg-black hover:bg-accent transition-colors duration-200 rounded-xl focus:outline-none focus:ring-4 focus:ring-accent/50 active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3 text-base font-medium text-black bg-white border-2 border-black hover:bg-black hover:text-white transition-colors duration-200 rounded-xl focus:outline-none focus:ring-4 focus:ring-accent/50;
+  }
+
+  .section-container {
+    @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-12 sm:py-16 lg:py-24;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Skip link for accessibility */
+.skip-link {
+  @apply absolute left-0 top-0 bg-black text-white px-4 py-2 -translate-y-full focus:translate-y-0 z-50 transition-transform;
+}
